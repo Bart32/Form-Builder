@@ -1,0 +1,27 @@
+.headerText{
+  margin-left:1%;
+  margin-top:1%;
+}
+.builder{
+  width:30%;
+  margin-left:5%;
+  border-style: solid;
+  border-width: 0.5px;
+}
+.builder button{
+  margin:1.5%;
+}
+.SubInputBuilder{
+  width:30%;
+  margin-top:1%;
+  border-style: solid;
+  border-width: 0.5px;
+  margin-bottom:1%;
+}
+.condition{
+  width:50%;
+  display:inline-block;
+}
+.addInputButton{
+  margin:1%
+}
