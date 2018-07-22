@@ -95,7 +95,6 @@ class ParentInput extends Component {
 */
 
   render(){
-    alert(this.props.typeValue);
     for (let i = this.state.arrayOfSubInputs.length; i < this.state.numberOfSubInputs; i ++) {
       this.state.arrayOfSubInputs.push(<ParentInput key={i} resetValue={this.resetValue} dynamicMarginLeft={this.state.dynamicMarginLeft} typeValue={this.state.typeValue} />)
     };
