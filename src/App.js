@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 import './App.css';
+
+import React, { Component } from 'react';
 
 
 class FormBuilder extends Component {
@@ -7,14 +8,21 @@ class FormBuilder extends Component {
     super()
     this.addInput = this.addInput.bind(this);
     this.state = {
-      
       arrayOfInputs : [],
       numberOfInputs : 0,
       firstInput: true,
       dynamicMarginLeft: -20,
     }
   }
-
+  componentWillMount(){
+    localStorage.getItem('inputsNumber') && this.setState({  // Local storage nie działa do końca poprawnie, ponieważ 'usuwanie' elementów polega na ukrywaniu ich, a nie na faktycznym usuwaniu ich z tablicy. 
+      numberOfInputs: JSON.parse(localStorage.getItem('inputsNumber'))
+    })
+  }
+  
+  componentWillUpdate(nextProps, nextState){
+    localStorage.setItem('inputsNumber', JSON.stringify(nextState.numberOfInputs));  // Local storage nie działa do końca poprawnie, ponieważ 'usuwanie' elementów polega na ukrywaniu ich, a nie na faktycznym usuwaniu ich z tablicy. 
+  }
 
   addInput(){ 
     this.setState (prevState => {
@@ -27,7 +35,7 @@ class FormBuilder extends Component {
 
   render(){
     for (let i = this.state.arrayOfInputs.length; i < this.state.numberOfInputs; i ++) {
-      this.state.arrayOfInputs.push(<ParentInput key={i} inputs={this.state.firstInput} dynamicMarginLeft={this.state.dynamicMarginLeft} handleChange={this.handleChange}/>);
+      this.state.arrayOfInputs.push(<ParentInput key={i} index={i} inputs={this.state.firstInput} dynamicMarginLeft={this.state.dynamicMarginLeft} handleChange={this.handleChange}/>);
     };
     return (
         <div>
@@ -165,7 +173,7 @@ class ParentInput extends Component {
             <option value="radio">Yes / No </option>
           </select>
           <button type="submit" className="btn btn-success" onClick={this.addSubInput}>Add Sub-Input</button>
-          <button type="submit" className="btn btn-danger" onClick={this.deleteInput}>Delete</button>
+          <button type="submit" className="btn btn-danger" onClick={this.deleteInput} data-index={this.props.index}>Delete</button>
         </div>
         <div>
           {this.state.arrayOfSubInputs}
