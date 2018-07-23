@@ -15,13 +15,13 @@ class FormBuilder extends Component {
     }
   }
   componentWillMount(){
-    localStorage.getItem('inputsNumber') && this.setState({  // Local storage nie działa do końca poprawnie, ponieważ 'usuwanie' elementów polega na ukrywaniu ich, a nie na faktycznym usuwaniu ich z tablicy. 
+    localStorage.getItem('inputsNumber') && this.setState({  // Local storage nie działa do końca poprawnie, ponieważ 'usuwanie' elementów polega na ukrywaniu ich, a nie na faktycznym usuwaniu ich z tablicy. Należy zrobic usuwanie za pomocą funkcji .split
       numberOfInputs: JSON.parse(localStorage.getItem('inputsNumber'))
     })
   }
   
   componentWillUpdate(nextProps, nextState){
-    localStorage.setItem('inputsNumber', JSON.stringify(nextState.numberOfInputs));  // Local storage nie działa do końca poprawnie, ponieważ 'usuwanie' elementów polega na ukrywaniu ich, a nie na faktycznym usuwaniu ich z tablicy. 
+    localStorage.setItem('inputsNumber', JSON.stringify(nextState.numberOfInputs));  // Local storage nie działa do końca poprawnie, ponieważ 'usuwanie' elementów polega na ukrywaniu ich, a nie na faktycznym usuwaniu ich z tablicy. Należy zrobic usuwanie za pomocą funkcji .split
   }
 
   addInput(){ 
