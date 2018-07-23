@@ -55,7 +55,6 @@ class ParentInput extends Component {
     this.addSubInput = this.addSubInput.bind(this);
     this.deleteInput = this.deleteInput.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.resetValue = this.resetValue.bind(this);
     this.state = {
       arrayOfSubInputs : [],
       numberOfSubInputs : 0,
@@ -95,12 +94,7 @@ class ParentInput extends Component {
     });
 
   }
-  /*resetValue(){
-    this.setState({
-      typeValue: "text"
-    })
-  }
-*/
+
 
   render(){
     for (let i = this.state.arrayOfSubInputs.length; i < this.state.numberOfSubInputs; i ++) {
